@@ -1,0 +1,31 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy to EC2
+        uses: aws-actions/aws-code-deploy@v1
+        with:
+          application-name: <your-codedeploy-application-name>
+          deployment-group: <your-deployment-group-name>
+          deployment-config-name: CodeDeployDefault.OneAtATime
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          region: us-west-1
