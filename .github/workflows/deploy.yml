@@ -27,5 +27,5 @@ jobs:
           application-name: contact-form-server
           deployment-group: servers
           deployment-config-name: CodeDeployDefault.OneAtATime
-          github-token: ${{ AbelMuro }}
+          github-token: ${{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}}
           region: us-west-1
