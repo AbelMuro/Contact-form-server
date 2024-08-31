@@ -28,7 +28,7 @@ app.post('/webhook', (req, res) => {
     // Check if the event is a push event
     if (payload.ref === 'refs/heads/main') {
         // Pull the latest changes from the repository
-        exec('cd /Contact-form-server && git pull', (error, stdout, stderr) => {
+        exec('cd / && git pull', (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error pulling changes: ${error.message}`);
                 return res.status(500).send('Error pulling changes!');
