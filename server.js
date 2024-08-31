@@ -35,6 +35,13 @@ app.post('/webhook', (req, res) => {
             }
             console.log(`stdout: ${stdout}`);
             console.log('Changes pulled successfully!');
+            exec('pm2 restart contact-form-server', (error, stdout, stderr) => {
+                if(error){
+                    console.error(`Error restarting: ${error.message}`);
+                    return res.status(500).send('Error restarting app');
+                }
+                console.log('successfully restarted app')
+            })
             res.status(200).send('changes pulled successfully!');
     })}
 });
