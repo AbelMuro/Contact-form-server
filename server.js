@@ -31,7 +31,7 @@ app.post('/webhook', (req, res) => {
         exec('git pull', (error, stdout, stderr) => {
             if(error) {
                 console.error(`Error pulling changes: ${error.message}`);
-                return res.status(500).send('Error pulling changes!');
+                return res.status(500).send('Error pulling changes');
             }
             console.log(`stdout: ${stdout}`);
             console.log('Changes pulled successfully');
