@@ -35,11 +35,15 @@ app.post('/webhook', (req, res) => {
             }
             console.log(`stdout: ${stdout}`);
             console.error(`stderr: ${stderr}`);
-            console.log('Changes pulled successfully!')
+            console.log('Changes pulled successfully!');
+            res.status(200).send('Changes pulled successfully');
         });
     } 
-    else 
+    else {
         console.log('Not a push event to the main branch!');
+        res.status(200).send('Not a push event to the main branch');        
+    }
+
     
 });
 
