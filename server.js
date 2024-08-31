@@ -41,10 +41,11 @@ app.post('/webhook', (req, res) => {
                     console.log('error finding PID', error.message);
                     return;
                 }
-                console.log('successfully retrieved pid')
                 const pid = stdout.trim();
 
                 if(pid){
+                    console.log(`successfully retrieved pid ${pid}`)
+                    console.log(`Killing ${pid} process`)
                     exec(`kill -9 ${pid}`, (error, stdout, stderr) => {
                         if(error){
                             console.log('error killing the app', error.message);
@@ -53,7 +54,7 @@ app.post('/webhook', (req, res) => {
 
                         console.log('successfully terminated pid process')
                         console.log('Starting the app...');
-                        exec('node /server.js', (error, stdout, stderr) => {
+                        exec('node server.js', (error, stdout, stderr) => {
                             if(error){
                                 console.log('error starting the app', error.message);
                                 return;
@@ -63,7 +64,7 @@ app.post('/webhook', (req, res) => {
                     })                    
                 }
                 else
-                    exec('node /server.js', (error, stdout, stderr) => {
+                    exec('node server.js', (error, stdout, stderr) => {
                         if(error){
                             console.log('error starting the app', error.message);
                             return;
