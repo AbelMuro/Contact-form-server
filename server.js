@@ -40,8 +40,9 @@ app.post('/webhook', (req, res) => {
                     console.log('error restarting the app', error.message);
                     return;
                 }
-                console.log('app successfully started!');
+                console.log('app successfully started!..');
             })
+            res.status(200).send('changes pulled successfully');
     })}
 });
 
