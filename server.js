@@ -35,7 +35,7 @@ app.post('/webhook', (req, res) => {
             }
             console.log(`stdout: ${stdout}`);
             console.log('Changes pulled successfully');
-            res.status(200).send('changes pulled successfully');
+            res.status(200).send('changes pulled successfully!');
     })}
 });
 
