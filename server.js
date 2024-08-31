@@ -68,7 +68,7 @@ app.post('/webhook', (req, res) => {
                             console.log('error starting the app', error.message);
                             return;
                         }
-                        console.log('successfully restarted the app');
+                        console.log('successfully restarted the app.');
                     })
             })
             res.status(200).send('Changes pulled successfully');
