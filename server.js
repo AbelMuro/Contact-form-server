@@ -34,9 +34,9 @@ app.post('/webhook', (req, res) => {
                 return res.status(500).send('Error pulling changes!');
             }
             console.log(`stdout: ${stdout}`);
-            console.log('Changes pulled successfully!.');
-            res.status(200).send('Changes pulled successfully!.');
-            
+            console.log('Changes pulled successfully!');
+            res.status(200).send('Changes pulled successfully!');
+
             exec('pgrep -f "server.js"', (error, stdout, stderr) => {
                 if(error){
                     console.log('error finding PID', error.message);
