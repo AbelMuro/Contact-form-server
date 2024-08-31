@@ -19,7 +19,7 @@ app.post('/', (req, res) => {
     const firstName = formData.firstName;
     const lastName = formData.lastName;
     S3.PutObject(`${firstName} ${lastName}`, formData);
-    res.send('Form has been uploaded!!!');
+    res.send('Form has been uploaded!');
 });
 
 app.post('/webhook', (req, res) => {
