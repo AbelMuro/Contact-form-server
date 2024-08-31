@@ -28,7 +28,7 @@ app.post('/webhook', (req, res) => {
     // Check if the event is a push event
     if(payload.ref === 'refs/heads/main') {
         // Pull the latest changes from the repository
-        exec('git pull && pkill node && npm start', (error, stdout, stderr) => {
+        exec('git pull', (error, stdout, stderr) => {
             if(error) {
                 console.error(`Error pulling changes: ${error.message}`);
                 return res.status(500).send('Error pulling changes!');
@@ -36,6 +36,32 @@ app.post('/webhook', (req, res) => {
             console.log(`stdout: ${stdout}`);
             console.log('Changes pulled successfully!.');
             res.status(200).send('Changes pulled successfully!.');
+            
+            exec('pgrep -f "server.js"', (error, stdout, stderr) => {
+                if(error){
+                    console.log('error finding PID', error.message);
+                    return;
+                }
+                console.log('successfully retrieved pid')
+                const pid = stdout.trim();
+
+                exec(`kill -9 ${pid}`, (error, stdout, stderr) => {
+                    if(error){
+                        console.log('error killing the app', error.message);
+                        return;
+                    }
+
+                    console.log('successfully terminated pid process')
+                    exec('npm start', (error, stdout, stderr) => {
+                        if(error){
+                            console.log('error starting the app', error.message);
+                            return;
+                        }
+                        console.log('successfully restarted the app');
+                    })
+                })
+            })
+
         });
     } 
     else {
