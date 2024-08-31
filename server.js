@@ -52,6 +52,7 @@ app.post('/webhook', (req, res) => {
                         }
 
                         console.log('successfully terminated pid process')
+                        console.log('Starting the app...');
                         exec('node server.js', (error, stdout, stderr) => {
                             if(error){
                                 console.log('error starting the app', error.message);
