@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "start pm2": "pm2 start server.js --name contact-form-server"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
