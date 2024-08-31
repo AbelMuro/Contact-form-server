@@ -35,7 +35,6 @@ app.post('/webhook', (req, res) => {
             }
             console.log(`stdout: ${stdout}`);
             console.log('Changes pulled successfully!');
-            res.status(200).send('Changes pulled successfully!');
 
             exec('pgrep -f "server.js"', (error, stdout, stderr) => {
                 if(error){
@@ -70,9 +69,8 @@ app.post('/webhook', (req, res) => {
                         }
                         console.log('successfully restarted the app');
                     })
-                
             })
-
+            res.status(200).send('Changes pulled successfully!');
         });
     } 
     else {
