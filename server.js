@@ -24,6 +24,8 @@ app.post('/', (req, res) => {
 app.post('/webhook', (req, res) => {
     const payload = req.body;
 
+    res.status(200).send('Webhook received');
+
     // Check if the event is a push event
     if (payload.ref === 'refs/heads/main') {
         // Pull the latest changes from the repository
