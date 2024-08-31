@@ -32,7 +32,7 @@ app.post('/', (req, res) => {
         exec('cd /Contact-form-server && git pull', (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error pulling changes: ${error.message}`);
-                return res.status(500).send('Error pulling changes');
+                return res.status(500).send('Error pulling changes!');
             }
             console.log(`stdout: ${stdout}`);
             console.error(`stderr: ${stderr}`);
