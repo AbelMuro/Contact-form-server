@@ -10,6 +10,7 @@ app.use(cors({
     origin: '*', 
     optionsSuccessStatus: 200 
 }));
+
 app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
