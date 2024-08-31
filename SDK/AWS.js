@@ -21,7 +21,7 @@ const PutObject = (objectName, data) => {
         if(err)
             console.log(err);
         else
-            console.log('data has be uploaded!');
+            console.log('data has be uploaded');
     });                
 }
 
