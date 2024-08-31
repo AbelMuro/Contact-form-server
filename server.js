@@ -35,14 +35,13 @@ app.post('/webhook', (req, res) => {
             }
             console.log(`stdout: ${stdout}`);
             console.log('Changes pulled successfully');
-        exec('/restart-app.sh', () => {
-            if(error){
-                console.log('error restarting the app', error.message);
-                return;
-            }
-            console.log('app successfully started!!');
-        })
-
+            exec('/restart-app.sh', () => {
+                if(error){
+                    console.log('error restarting the app', error.message);
+                    return;
+                }
+                console.log('app successfully started!!');
+            })
     })}
 });
 
