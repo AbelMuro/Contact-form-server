@@ -29,7 +29,7 @@ app.post('/webhook', (req, res) => {
     if (payload.ref === 'refs/heads/main') {
         // Pull the latest changes from the repository
         exec('cd / && git pull', (error, stdout, stderr) => {
-            if (error) {
+            if(error) {
                 console.error(`Error pulling changes: ${error.message}`);
                 return res.status(500).send('Error pulling changes!');
             }
