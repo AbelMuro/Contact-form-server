@@ -34,7 +34,6 @@ app.post('/webhook', (req, res) => {
                 return res.status(500).send('Error pulling changes!');
             }
             console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
             console.log('Changes pulled successfully.');
             res.status(200).send('Changes pulled successfully.');
         });
@@ -43,8 +42,6 @@ app.post('/webhook', (req, res) => {
         console.log('Not a push event to the main branch!');
         res.status(200).send('Not a push event to the main branch');        
     }
-
-    
 });
 
 app.listen(port, () => {
