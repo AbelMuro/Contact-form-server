@@ -36,10 +36,10 @@ app.post('/', (req, res) => {
             }
             console.log(`stdout: ${stdout}`);
             console.error(`stderr: ${stderr}`);
-            res.send('Changes pulled successfully!');
+            console.log('Changes pulled successfully!')
         });
     } else {
-        res.send('Not a push event to the main branch!');
+        console.log('Not a push event to the main branch!');
     }
 });
 
