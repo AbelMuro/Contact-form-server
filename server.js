@@ -16,13 +16,14 @@ app.use(express.json());
 
 app.post('/', (req, res) => {
     const formData = req.body;
+    if(!formData.firstName) return;
     const firstName = formData.firstName;
     const lastName = formData.lastName;
     S3.PutObject(`${firstName} ${lastName}`, formData);
     res.send('Form has been uploaded');
 });
 
-app.post('/webhook', (req, res) => {
+app.post('/', (req, res) => {
     const payload = req.body;
 
     // Check if the event is a push event
