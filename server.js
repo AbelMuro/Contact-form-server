@@ -14,8 +14,6 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(express.json());
 
-
-
 app.post('/', (req, res) => {
     const formData = req.body;
     const firstName = formData.firstName;
