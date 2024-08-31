@@ -35,45 +35,15 @@ app.post('/webhook', (req, res) => {
             }
             console.log(`stdout: ${stdout}`);
             console.log('Changes pulled successfully');
+        exec('/restart-app.sh', () => {
+            if(error){
+                console.log('error restarting the app', error.message);
+                return;
+            }
+            console.log('app successfully started');
+        })
 
-            exec('pgrep -f "server.js"', (error, stdout, stderr) => {
-                if(error){
-                    console.log('error finding PID', error.message);
-                    return;
-                }
-                const pid = stdout.trim();
-
-                if(pid){
-                    console.log(`successfully retrieved pid ${pid}`)
-                    console.log(`Killing ${pid} process`)
-                    exec(`kill -9 ${pid}`);  
-                    console.log(`successfully terminated pid ${pid} process`)
-                    console.log('Starting the app...');
-                    exec('node server.js', (error, stdout, stderr) => {
-                        if(error){
-                            console.log('error starting the app', error.message);
-                            return;
-                        }
-                        console.log('successfully restarted the app');
-                    })
-                    console.log('successfully restarted the app');
-                }
-                else
-                    exec('node server.js', (error, stdout, stderr) => {
-                        if(error){
-                            console.log('error starting the app', error.message);
-                            return;
-                        }
-                        console.log('successfully restarted the app.');
-                    })
-            })
-            res.status(200).send('Changes pulled successfully');
-        });
-    } 
-    else {
-        console.log('Not a push event to the main branch!');
-        res.status(200).send('Not a push event to the main branch');        
-    }
+    })}
 });
 
 app.listen(port, () => {
