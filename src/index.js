@@ -11,6 +11,8 @@ connectDB();
 
 app.use(cors({
     origin: 'https://contact-us-front-end.netlify.app', 
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
     optionsSuccessStatus: 200 
 }));
 
