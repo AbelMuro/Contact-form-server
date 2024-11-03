@@ -10,7 +10,7 @@ config();
 connectDB();
 
 app.use(cors({
-    origin: '*', 
+    origin: 'https://contact-form-server-1ffe5b24a2df.herokuapp.com', 
     optionsSuccessStatus: 200 
 }));
 
