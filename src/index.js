@@ -10,7 +10,7 @@ config();
 connectDB();
 
 app.use(cors({
-    origin: 'https://contact-form-server-1ffe5b24a2df.herokuapp.com', 
+    origin: 'https://contact-us-front-end.netlify.app', 
     optionsSuccessStatus: 200 
 }));
 
