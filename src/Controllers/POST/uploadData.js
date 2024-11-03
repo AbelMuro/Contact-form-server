@@ -1,8 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const router = express.Router();
 const {Enquiry} = require('../../Models/Models.js');
-const ObjectId = mongoose.Types.ObjectId;
 
 
 router.post('/upload_data', (req, res) => {
