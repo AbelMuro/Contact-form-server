@@ -25,12 +25,14 @@ router.post('/upload_data', async (req, res) => {
         res.status(200).send('Form has been uploaded');
     }
     catch(error){
-        if(error.message.includes('E11000 duplicate key error collection')){
+        const message = error.message
+
+        if(message.includes('E11000 duplicate key error collection')){
             console.log('Document with the specified _id already exists')             
             res.status(403).send('Document with the specified _id already exists') 
         }
         else
-            res.status(500).send('Internal Error has occurres, please try again later');
+            res.status(500).send(message);
     }
 });
 
