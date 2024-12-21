@@ -1,5 +1,3 @@
 /.env
 /node_modules
-/netlify
-# Local Netlify folder
 .netlify

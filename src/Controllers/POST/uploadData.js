@@ -3,7 +3,7 @@ const router = express.Router();
 const {Enquiry} = require('../../Models/Models.js');
 
 
-router.post('/upload_data', (req, res) => {
+router.post('/upload_data', async (req, res) => {
     const formData = req.body;
     const firstName = formData.firstName;
     const lastName = formData.lastName;
@@ -21,7 +21,7 @@ router.post('/upload_data', (req, res) => {
 
     try{
         const newEnquiry = new Enquiry(enquiry);
-        newEnquiry.save();
+        await newEnquiry.save();
         res.status(200).send('Form has been uploaded');
     }
     catch(error){
@@ -29,6 +29,8 @@ router.post('/upload_data', (req, res) => {
             console.log('Document with the specified _id already exists')             
             res.status(403).send('Document with the specified _id already exists') 
         }
+        else
+            res.status(500).send('Internal Error has occurres, please try again later');
     }
 });
 
